@@ -1,0 +1,149 @@
+// #JS Day 1 Homework
+
+// Go through each sample code and work out what the output will be and explain what happened.
+
+// ### Episode 1
+// ```
+var name = 'Keith';
+
+var printName = function() {
+  console.log('My name is ' + name );
+}
+
+printName();
+
+
+Code will pring out "My name is Kieth" as the function takes the variable name from outside the function.
+
+
+// ```
+
+// ### Episode 2
+// ```
+score = 5;
+
+var result = function() {
+  var score = 3;
+  return score;
+}
+
+console.log(result());
+
+Code will print out the number 3 as a string as the value returned from the local variable is 3 and it automatically gets parsed to a string when logged.
+
+// ```
+
+// ### Episode 3
+// ```
+var myAnimals = ['Chickens', 'Cats', 'Rabbits'];
+
+var listAnimals = function() {
+  myAnimals = ['Ducks', 'Dogs', 'Lions'];
+  for(var i=0;i<myAnimals.length; i++){
+    console.log(i + ": " + myAnimals[i]);
+  }
+}
+
+listAnimals();
+
+// The invoking of the function listAnimals() will log tot he console an index number followed by the animal that corredsponds to it in the the array.
+
+// ```
+
+// ### Episode 4
+
+// ```
+var suspectOne = 'Jay';
+var suspectTwo = 'Val';
+var suspectThree = 'Keith';
+var suspectFour = 'Rick';
+
+var allSuspects = function() {
+  var suspectThree = 'Harvey'
+  console.log('Suspects include: ' + suspectOne + ', ' + suspectTwo + ', ' + suspectThree + ', ' + suspectFour)
+}
+
+allSuspects();
+console.log( 'Suspect three is:' + suspectThree )
+
+
+// This code will print out the names "Jay, Val, Harvey, Rick" when allSuspects() is called, the console log outside he function will log out the name "Kieth"
+
+
+// ```
+
+// ### Episode 5
+
+// ```
+var detective = {
+    name : 'Ace Ventura',
+    pet : 'monkey'
+  }
+
+var printName = function(detective) {
+  return detective.name
+}
+
+var detectiveInfo = function() {
+  detective['name'] = 'Poirot'
+  return printName(detective);
+}
+
+console.log(detectiveInfo());
+
+// This code will log out the name poirot, but make no mention of his pet monkey.
+
+// ```
+
+// ### Episode 6
+// ```
+var murderer = 'rick';
+
+var outerFunction = function(){
+  var murderer = 'marc';
+
+  var innerFunction = function(){
+    murderer = 'valerie';
+  }
+
+  innerFunction();
+}
+
+outerFunction();
+console.log('the murderer is ', murderer);
+
+// This code will print out the "The murderer is rick". Inside the function there is a locla murdered called marc, in which the inner function changes. Presumably the inner function, when it cannot find the variable declaration "murderer", looks outside it's scopes until it finds one.
+
+// ```
+
+// ### Episode 7 - Make up your own episode/s!
+
+var murderer = '???';
+var weapon = '???';
+
+function lookForClues(){
+  function findWeapon(){
+    var weapin = "stick of butter";
+    weapon = "keyboard";
+    function lookCloser(){
+      weapon = "Text-Based Adventure game";
+    }
+    lookCloser();
+  }
+  function findMurderer(){
+    murderer = "Zsolt";
+    function lookCloser(){
+      var murderer = "Mr R Herring";
+    }
+    lookCloser();
+  }
+  findWeapon();
+  findMurderer();
+}
+
+lookForClues();
+console.log(murderer + " used " + weapon + " to kill Paul, the underwear model");
+
+
+
+// Make up your own episode which can be whatever you wish and the rest of the class will work out together what happened and what the output will be.
